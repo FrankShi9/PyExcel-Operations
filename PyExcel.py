@@ -11,7 +11,7 @@ import pandas as pd
 
 count = 0
 
-rootdir = 'D:\\XJTLU UPD DCW\\UPD Data Property\\丹东\\建筑形态\\低层（0-3层）' #change here
+rootdir = '' #change here
 
 #---------------------------------------------------------------------------------------------------
 
@@ -62,7 +62,7 @@ def delete_re_rows():
                 try:
                     chk_first = re.findall(pattern,A0)[0]
 
-                    if A0[0:4] == '当页汇总':
+                    if A0[0:4] == '': # condition content
                         pass
                     else:
                         rows_get.append(i)
@@ -120,13 +120,13 @@ def addColumn():
             for index, row in enumerate(ws.rows):
                 if index == 0:
                     if cnt == 0:
-                        row[0].value = '日期'
+                        row[0].value = ''
                     elif cnt == 1:
-                        row[0].value = '类型'
+                        row[0].value = ''
                     elif cnt == 2:
-                        row[0].value = '分类标准'
+                        row[0].value = ''
                     elif cnt == 3:
-                        row[0].value = '城市'
+                        row[0].value = ''
                 else:
                     if cnt == 0:
                         row[0].value = dir[6][0:-4]
@@ -170,15 +170,15 @@ def merge():
         print(str(indexCnt)+'merged')
         indexCnt += 1
         cnt += 1
-    pd.concat(list).to_excel('D:\\XJTLU UPD DCW\\UPD Data Property\\舟山\\舟山.xlsx', index = False) #change here
+    pd.concat(list).to_excel('filename', index = False) #change here
 
 #---------------------------------------------------------------------------------------------------
 
 
 if __name__ == "__main__":
     delete_re_rows()
-    #renameXLSX()
-    #addColumn()
-    #deleteXls()
-    #merge()
+    renameXLSX()
+    addColumn()
+    deleteXls()
+    merge()
     
